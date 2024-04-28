@@ -1,0 +1,432 @@
+{
+	"info": {
+		"_postman_id": "d9a8f283-8794-48f5-b3fa-0829f3dd8814",
+		"name": "Search AI",
+		"description": "Sample queries for the demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1747846"
+	},
+	"item": [
+		{
+			"name": "Analyzers",
+			"item": [
+				{
+					"name": "Analyze Endpoint - Standard Analyzer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{ai-search-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"cycling helmet\",\r\n  \"analyzer\": \"standard\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ai-search-base-url}}/indexes/{{ai-search-index-name}}/analyze?api-version=2023-11-01",
+							"host": [
+								"{{ai-search-base-url}}"
+							],
+							"path": [
+								"indexes",
+								"{{ai-search-index-name}}",
+								"analyze"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Analyze Endpoint - En Microsoft",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{ai-search-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"text\": \"cycling helmet\",\r\n  \"analyzer\": \"en.microsoft\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ai-search-base-url}}/indexes/{{ai-search-index-name}}/analyze?api-version=2023-11-01",
+							"host": [
+								"{{ai-search-base-url}}"
+							],
+							"path": [
+								"indexes",
+								"{{ai-search-index-name}}",
+								"analyze"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Search Queries",
+			"item": [
+				{
+					"name": "Return All With Specific Set Of Fields",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{ai-search-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"search\": \"*\",\r\n    \"queryType\": \"simple\",\r\n    \"select\": \"listingId, beds, baths, description, street, region, postCode\",\r\n    \"count\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ai-search-base-url}}/indexes/{{ai-search-index-name}}/docs/search?api-version=2023-11-01",
+							"host": [
+								"{{ai-search-base-url}}"
+							],
+							"path": [
+								"indexes",
+								"{{ai-search-index-name}}",
+								"docs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Return All",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{ai-search-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"search\": \"*\",\r\n    \"queryType\": \"simple\",\r\n    \"count\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ai-search-base-url}}/indexes/{{ai-search-index-name}}/docs/search?api-version=2023-11-01",
+							"host": [
+								"{{ai-search-base-url}}"
+							],
+							"path": [
+								"indexes",
+								"{{ai-search-index-name}}",
+								"docs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Full Text Search - Search Mode Any",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{ai-search-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"search\": \"pool heated\",\r\n    \"searchMode\": \"any\", // any => return any part of the search matches, full returns the documents matches all parts\r\n    \"queryType\": \"simple\",\r\n    \"count\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ai-search-base-url}}/indexes/{{ai-search-index-name}}/docs/search?api-version=2023-11-01",
+							"host": [
+								"{{ai-search-base-url}}"
+							],
+							"path": [
+								"indexes",
+								"{{ai-search-index-name}}",
+								"docs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Full Text Search - Search Mode All",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{ai-search-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"search\": \"pool heated\",\r\n    \"searchMode\": \"all\", // any => return any part of the search matches, full returns the documents matches all parts\r\n    \"queryType\": \"simple\",\r\n    \"count\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ai-search-base-url}}/indexes/{{ai-search-index-name}}/docs/search?api-version=2023-11-01",
+							"host": [
+								"{{ai-search-base-url}}"
+							],
+							"path": [
+								"indexes",
+								"{{ai-search-index-name}}",
+								"docs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Lookup By Id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{ai-search-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"search\": \"pool heated\",\r\n    \"searchMode\": \"all\", // any => return any part of the search matches, full returns the documents matches all parts\r\n    \"queryType\": \"simple\",\r\n    \"count\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ai-search-base-url}}/indexes/{{ai-search-index-name}}/docs/OTM4MjcxNA2?api-version=2023-11-01",
+							"host": [
+								"{{ai-search-base-url}}"
+							],
+							"path": [
+								"indexes",
+								"{{ai-search-index-name}}",
+								"docs",
+								"OTM4MjcxNA2"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter on Text",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{ai-search-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "/*\r\nFilter syntax is an OData expression that you can use by itself or with search. Used together, filter is applied first to the entire index, and then the search is performed on the results of the filter. Filters can therefore be a useful technique to improve query performance since they reduce the set of documents that the search query needs to process.\r\n*/\r\n{\r\n    \"search\": \"pool\",\r\n    \"queryType\": \"simple\",\r\n    \"filter\": \"status eq 'sold'\", // staus: sold, pending, active\r\n    \"searchFields\": \"description,source,street,city\",\r\n    \"select\": \"listingId, beds, baths, description, status, street, region, postCode\",\r\n    \"count\": true\r\n}\r\n\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ai-search-base-url}}/indexes/{{ai-search-index-name}}/docs/search?api-version=2023-11-01",
+							"host": [
+								"{{ai-search-base-url}}"
+							],
+							"path": [
+								"indexes",
+								"{{ai-search-index-name}}",
+								"docs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Range Queries",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{ai-search-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "/*\r\nFilter syntax is an OData expression that you can use by itself or with search. Used together, filter is applied first to the entire index, and then the search is performed on the results of the filter. Filters can therefore be a useful technique to improve query performance since they reduce the set of documents that the search query needs to process.\r\n*/\r\n{\r\n    \"search\": \"pool\",\r\n    \"queryType\": \"simple\",\r\n    \"filter\": \"beds ge 2 and beds lt 4\",\r\n    \"searchFields\": \"description,source,street,city\",\r\n    \"select\": \"listingId, beds, baths, description, status, street, region, postCode\",\r\n    \"count\": true\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ai-search-base-url}}/indexes/{{ai-search-index-name}}/docs/search?api-version=2023-11-01",
+							"host": [
+								"{{ai-search-base-url}}"
+							],
+							"path": [
+								"indexes",
+								"{{ai-search-index-name}}",
+								"docs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Full Text Search - Boolean Operators",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{ai-search-key}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"search\": \"pool -\\\"heated\\\"\",\r\n    \"searchMode\": \"any\", // ANY => RETURN ANY PART OF THE SEARCH MATCHES, FULL RETURNS THE DOCUMENTS MATCHES ALL PARTS\r\n    \"queryType\": \"simple\",\r\n    \"count\": true\r\n}\r\n\r\n\r\n// {\r\n//     \"search\": \"*\", // DOCS COUNT ALL: 4959\r\n//     \"searchMode\": \"all\", // ANY => RETURN ANY PART OF THE SEARCH MATCHES, FULL RETURNS THE DOCUMENTS MATCHES ALL PARTS\r\n//     \"queryType\": \"simple\",\r\n//     \"count\": true\r\n// }\r\n\r\n// {\r\n//     \"search\": \"pool\", // docs count with pool: 795\r\n//     \"searchMode\": \"all\", // ANY => RETURN ANY PART OF THE SEARCH MATCHES, FULL RETURNS THE DOCUMENTS MATCHES ALL PARTS\r\n//     \"queryType\": \"simple\",\r\n//     \"count\": true\r\n// }\r\n\r\n// {\r\n//     \"search\": \"+\\\"heated\\\"\", // heated docs: 814\r\n//     \"searchMode\": \"all\", // any => return any part of the search matches, full returns the documents matches all parts\r\n//     \"queryType\": \"simple\",\r\n//     \"count\": true\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{ai-search-base-url}}/indexes/{{ai-search-index-name}}/docs/search?api-version=2023-11-01",
+							"host": [
+								"{{ai-search-base-url}}"
+							],
+							"path": [
+								"indexes",
+								"{{ai-search-index-name}}",
+								"docs",
+								"search"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "2023-11-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
